@@ -13,10 +13,16 @@ class App extends React.Component{
   };
   // 자바스크립트 코드
   add = () => {
-    console.log("add");
+    // this.state.count = 1; 이런식으로 하면 react는 render를 refresh하지 않기 때문에 적용이 안됨 + 직접 state 변경하지 말라함
+    //  = 매번 state의 상태를 변경할 때 react가 render function을 호출해서 바꿔주길 원함
+    // setState를 사용하면 react가 렌더를 한번 더 돌려서 변경 된 값이 state를 덮어 씌움 그래서 변하게 됨
+    // this.state.count +1 이라고 적는 것보다 fuction 방식으로 current => ({count: current.count +1}) 이라고 적는게 좋음
+    this.setState(current => ({ count: current.count +1 }));
   };
   minus = () => {
-    console.log("minus");
+    // 현재 카운트에서 1을 뺀 값 (좋은 방법은 아님 나중에 오류 생길 수 도있음)
+    //  = 현재 state를 얻고싶다 setState(current => ({ count: current.count -1 }))
+    this.setState({ count: this.state.count -1 });
   };
   render(){
   // state를 render안에 넣고싶으면 {this.state.count} 이런 식으로 적으면 됨
@@ -35,5 +41,6 @@ class App extends React.Component{
 // 함수형 컴포넌트는 function이고 뭔가를 return 한 후에 스크린에 표시,
 // 클래스형 컴포넌트는 class이고 react component로 부터 확장된 후 screen에 표시됨.
 // react는 내 class component의 render method를 자동으로 실행함
+// 매번 setState를 호출할 때 마다 react는 render를 다시 돌리고 변경된 값을 적용시킴
 
 export default App;
