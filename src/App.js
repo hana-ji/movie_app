@@ -24,8 +24,18 @@ class App extends React.Component{
     //  = 현재 state를 얻고싶다 setState(current => ({ count: current.count -1 }))
     this.setState({ count: this.state.count -1 });
   };
+  componentDidMount() {
+    console.log("component renderd");
+  }
+  componentDidUpdate() {
+    console.log("i just updated!")
+  }
+  componentWillUnmount(){
+    console.log("BYE, world")
+  }
   render(){
-  // state를 render안에 넣고싶으면 {this.state.count} 이런 식으로 적으면 됨
+  console.log("i am renderring");
+    // state를 render안에 넣고싶으면 {this.state.count} 이런 식으로 적으면 됨
     return <div>
         <h1>The number is: {this.state.count}</h1>
         {/* 리액트에서는 온클릭이라는 프롭이 자동으로 있음 
