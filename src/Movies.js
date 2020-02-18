@@ -9,7 +9,7 @@ function Movies({ year, title, summary, poster, genres}) {
         <div className="movie__data">
             {/* javascript에서 css 적용하는 법: style={{}} */}
             <h3 className="movie__title">{title}</h3>
-            <ul className="genres">
+            <ul className="movie__genres">
                 {/* map이 아이템이랑 아이템 넘버도 줌 (index,number 다 가능)*/}
                 {genres.map((genre, index) => (
                 <li className="genres__genre" key={index}>{genre}</li>
